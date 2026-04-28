@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>مركز Mobifix للصيانة</title>
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Mobifix" />
+    <meta name="apple-mobile-web-app-title" content="Mobifix" />
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+      // Service Worker Registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').then(reg => {
+            console.log('SW Registered:', reg.scope);
+          }).catch(err => {
+            console.log('SW Registration failed:', err);
+          });
+        });
+      }
+
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Tajawal', 'sans-serif'],
+              kufi: ['Reem Kufi', 'sans-serif'],
+            },
+            colors: {
+              primary: '#0F766E', // Teal 700
+              secondary: '#F59E0B', // Amber 500
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Tajawal', sans-serif;
+        background-color: #f3f4f6;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* إخفاء شريط التمرير ولكن السماح بالتمرير */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* تأثيرات حركية */
+      .animate-scale-in {
+        animation: scaleIn 0.2s ease-out forwards;
+      }
+      @keyframes scaleIn {
+        from { transform: scale(0.95); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+      }
+      
+      /* تنسيقات الطباعة */
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #receipt-to-print, #receipt-to-print * {
+          visibility: visible;
+        }
+        #receipt-to-print {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          max-width: 80mm; /* عرض الورق الحراري القياسي */
+          margin: 0;
+          padding: 0;
+          border: none;
+          box-shadow: none;
+          background: white;
+          color: black;
+        }
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="./assets/index-DY0S-Qa_.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+</body>
+</html>
